@@ -1,3 +1,4 @@
+local GuiService = game:GetService("GuiService")
 local VirtualUser = game:GetService("VirtualUser")
 local TweenService = game:GetService("TweenService")
 local TeleportService = game:GetService("TeleportService")
