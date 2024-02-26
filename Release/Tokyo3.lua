@@ -52,7 +52,7 @@ function getMoney()
     return tonumber(text_num)
 end
 
-local target = 1000 + getMoney()
+local target = 0 + getMoney()
 local nc = noclip()
 local bv = Body_Noclip()
 
@@ -69,20 +69,28 @@ while getMoney() <= target do
             task.wait()
             TouchCoins:FireServer(v)
         end
+        if getMoney() > target then
+            break
+        end
     end
 end
 nc:Disconnect()
 bv:Destroy()
 RunService:Set3dRenderingEnabled(true)
+LocalPlayer.Character.Humanoid.Health = 0
+LocalPlayer.Character.Humanoid:Destroy()
+repeat wait() until LocalPlayer.Character:FindFirstChild("Humanoid")
 
 
+HumanoidRootPart = LocalPlayer.Character.HumanoidRootPart
 local Services = game:GetService("ReplicatedStorage").Packages.Knit.Services
-
 local NPC_Treasures = game:GetService("Workspace").NPCs.Treasure
+
+
 for _,v in pairs(NPC_Treasures:GetChildren()) do
     HumanoidRootPart.CFrame = v.PrimaryPart.CFrame
-    task.wait(.5)
-    Services.TreasureService.RF.Claim_TaskTreasure:InvokeServer(v.Name)
+    task.wait(1)
+    Services.TreasureService.RF.Accept_NpcTask:InvokeServer(v.Name)
     wait(1)
     local timeout = tick()
     local Interact_Treasures = game:GetService("Workspace").Treasures
@@ -93,7 +101,7 @@ for _,v in pairs(NPC_Treasures:GetChildren()) do
             while vv.PrimaryPart.Transparency == 0 do 
                 fireproximityprompt(vv.ProximityPrompt)
                 task.wait()
-                if tick() - timeout > 2 then
+                if tick() - timeout > 3 then
                     break
                 end
             end 
@@ -101,13 +109,9 @@ for _,v in pairs(NPC_Treasures:GetChildren()) do
     end
     wait(1)
     HumanoidRootPart.CFrame = v.PrimaryPart.CFrame
-    task.wait(.5)
-    game:GetService("ReplicatedStorage").newtrace.RE.CallAPI:FireServer({
-        [1] = "\227\131\136\227\131\188\227\130\175NPC",
-        [2] = "NPC",
-        [3] = v.Name
-    })
-    task.wait(.5)
+    task.wait(1)
+    Services.TreasureService.RF.Claim_TaskTreasure:InvokeServer(v.Name)
+    task.wait(1)
 end
 
 
