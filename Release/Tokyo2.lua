@@ -65,27 +65,12 @@ while getMoney() <= target do
     local select
     local dis
     for i,v in pairs(game:GetService("Workspace").Coins:GetChildren()) do
-        if v.Transparency == 0 then
-            local temp = (v.Position - HumanoidRootPart.Position).Magnitude
-            if select then
-                if temp < dis then
-                    select = v
-                    dis = temp
-                    if dis <= 10 then
-                        break
-                    end
-                end
-            else
-                select = v
-                dis = temp
-            end
+        while v.Transparency == 0 do
+            HumanoidRootPart.CFrame = v.CFrame
+            task.wait()
+            TouchCoins:FireServer(v)
         end
     end
-    repeat
-        HumanoidRootPart.CFrame = select.CFrame
-        task.wait()
-        TouchCoins:FireServer(select)
-    until select.Transparency ~= 0
 end
 nc:Disconnect()
 bv:Destroy()
