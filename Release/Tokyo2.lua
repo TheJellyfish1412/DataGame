@@ -50,6 +50,7 @@ local ti = tick()
 local nc = noclip()
 local bv = Body_Noclip()
 
+RunService:Set3dRenderingEnabled(false)
 LocalPlayer.Character.Humanoid.PlatformStand = true
 LocalPlayer.Character.LowerTorso:Destroy()
 
@@ -90,6 +91,7 @@ while tonumber(num.Text) <= target do
 end
 nc:Disconnect()
 bv:Destroy()
+RunService:Set3dRenderingEnabled(true)
 
 local Interact_Buildings = game:GetService("Workspace")["Tokyo_Modern"]["Interact_Buildings"]
 for _,v in pairs(Interact_Buildings:GetChildren()) do
