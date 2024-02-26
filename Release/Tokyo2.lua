@@ -53,7 +53,6 @@ function getMoney()
 end
 
 local target = 800 + getMoney()
-local ti = tick()
 local nc = noclip()
 local bv = Body_Noclip()
 
