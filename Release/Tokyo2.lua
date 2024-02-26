@@ -46,7 +46,13 @@ end
 
 local TouchCoins = game:GetService("ReplicatedStorage").Packages.Knit.Services.PlayerManagerService.RE.TouchCoins
 local num = LocalPlayer.PlayerGui.MainGui.Right.FrameUR.Money.BG.BK.Money
-local target = 800 + tonumber(string.gsub(num.Text, ",", ""))
+
+function getMoney()
+    local text_num = string.gsub(num.Text, ",", "")
+    return tonumber(text_num)
+end
+
+local target = 800 + getMoney()
 local ti = tick()
 local nc = noclip()
 local bv = Body_Noclip()
@@ -55,7 +61,7 @@ RunService:Set3dRenderingEnabled(false)
 LocalPlayer.Character.Humanoid.PlatformStand = true
 LocalPlayer.Character.LowerTorso:Destroy()
 
-while tonumber(string.gsub(num.Text, ",", "")) <= target do
+while getMoney() <= target do
     local select
     local dis
     for i,v in pairs(game:GetService("Workspace").Coins:GetChildren()) do
