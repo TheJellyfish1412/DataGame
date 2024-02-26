@@ -44,6 +44,7 @@ function noclip()
     return Noclipping
 end
 
+local TouchCoins = game:GetService("ReplicatedStorage").Packages.Knit.Services.PlayerManagerService.RE.TouchCoins
 local num = LocalPlayer.PlayerGui.MainGui.Right.FrameUR.Money.BG.BK.Money
 local target = 800 + tonumber(num.Text)
 local ti = tick()
@@ -74,19 +75,10 @@ while tonumber(num.Text) <= target do
             end
         end
     end
-    -- + Vector3.new(0,0,0)
-    local t = tick()
     repeat
-        local tw = TweenService:Create(HumanoidRootPart, TweenInfo.new(0.2), {["CFrame"] = (CFrame.new(select.Position))})
-        tw:Play()
+        HumanoidRootPart.CFrame = select.CFrame
         task.wait()
-        if tick() - t > 1 then
-            spawn(function()
-                select.Transparency = 1
-                wait(10)
-                select.Transparency = 0
-            end)
-        end
+        TouchCoins:FireServer(select)
     until select.Transparency ~= 0
 end
 nc:Disconnect()
