@@ -52,7 +52,7 @@ function getMoney()
     return tonumber(text_num)
 end
 
-local target = 0 + getMoney()
+local target = 1000 + getMoney()
 local nc = noclip()
 local bv = Body_Noclip()
 
