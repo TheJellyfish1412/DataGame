@@ -63,7 +63,7 @@ LocalPlayer.Character.LowerTorso:Destroy()
 while getMoney() <= target do
     local select
     local dis
-    for i,v in pairs(game:GetService("Workspace").Coins:GetChildren()) do
+    for i,v in pairs(game:GetService("Workspace")["Coins(Edo)"]:GetChildren()) do
         while v.Transparency == 0 do
             HumanoidRootPart.CFrame = v.CFrame
             task.wait()
@@ -84,7 +84,7 @@ repeat wait() until LocalPlayer.Character:FindFirstChild("Humanoid")
 
 HumanoidRootPart = LocalPlayer.Character.HumanoidRootPart
 local Services = game:GetService("ReplicatedStorage").Packages.Knit.Services
-local NPC_Treasures = game:GetService("Workspace").NPCs.Treasure
+local NPC_Treasures = game:GetService("Workspace").NPCs["Edo_Treasure"]
 
 
 for _,v in pairs(NPC_Treasures:GetChildren()) do
@@ -93,7 +93,7 @@ for _,v in pairs(NPC_Treasures:GetChildren()) do
     Services.TreasureService.RF.Accept_NpcTask:InvokeServer(v.Name)
     wait(1)
     local timeout = tick()
-    local Interact_Treasures = game:GetService("Workspace").Treasures
+    local Interact_Treasures = game:GetService("Workspace").Treasures_Edo
     for _,vv in pairs(Interact_Treasures:GetChildren()) do
         if vv:FindFirstChild("ProximityPrompt") then
             HumanoidRootPart.CFrame = vv.PrimaryPart.CFrame
