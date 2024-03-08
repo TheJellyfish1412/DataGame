@@ -56,14 +56,14 @@ local target = 800 + getMoney()
 local nc = noclip()
 local bv = Body_Noclip()
 
-RunService:Set3dRenderingEnabled(false)
+-- RunService:Set3dRenderingEnabled(false)
 LocalPlayer.Character.Humanoid.PlatformStand = true
 LocalPlayer.Character.LowerTorso:Destroy()
 
 while getMoney() <= target do
     local select
     local dis
-    for i,v in pairs(game:GetService("Workspace").Coins:GetChildren()) do
+    for i,v in pairs(game:GetService("Workspace")["Coins(Edo)"]:GetChildren()) do
         while v.Transparency == 0 do
             HumanoidRootPart.CFrame = v.CFrame
             task.wait()
@@ -73,7 +73,7 @@ while getMoney() <= target do
 end
 nc:Disconnect()
 bv:Destroy()
-RunService:Set3dRenderingEnabled(true)
+-- RunService:Set3dRenderingEnabled(true)
 
 local Interact_Buildings = game:GetService("Workspace")["Tokyo_Modern"]["Interact_Buildings"]
 for _,v in pairs(Interact_Buildings:GetChildren()) do
