@@ -75,7 +75,7 @@ nc:Disconnect()
 bv:Destroy()
 -- RunService:Set3dRenderingEnabled(true)
 
-local Interact_Buildings = game:GetService("Workspace")["Tokyo_Modern"]["Interact_Buildings"]
+local Interact_Buildings = game:GetService("Workspace")["Tokyo_Edo"]["Interact_Buildings"]
 for _,v in pairs(Interact_Buildings:GetChildren()) do
     if v.Name ~= "Animate_iMark" then
         for _,vv in pairs(v:GetChildren()) do
